@@ -1,5 +1,6 @@
 import React from 'react';
 import { SearchPractice } from './components/SearchPractice/SearchPractice'
+import { TodoPractice } from './components/TodoPractice/TodoPractice';
 
 function App() {
 
@@ -8,7 +9,8 @@ function App() {
       <div className="w-[100%] bg-blue-400 flex justify-center items-center h-14">
         <p className="text-2xl font-medium text-white">React Practice</p>
       </div>
-      <SearchPractice />
+      {/* <SearchPractice /> */}
+      <TodoPractice />
     </div>
   )
 }
