@@ -1,7 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TodoCard } from './TodoCard'
+import { todoData } from './data'
+import { completedData } from './data'
 
 export const TodoPractice = () => {
+
+    const [todos, setTodos] = useState(todoData)
+    const [completedTodos, setCompletedTodos] = useState([])
+
+    const [status, setStatus] = useState(false)
+    
+    const [showCurrent, setShowCurrent] = useState(true)
+    const [showCompleted, setShowCompleted] = useState(false)
+
+    const getStatus = (id) => {
+        const updatedTodo = todos.map((todo) => {
+            if (todo.id === id) {
+                const updatedTodo = { ...todo, status: true };
+                setCompletedTodos(prev => [...prev, updatedTodo]);
+                return updatedTodo
+            }
+            return todo
+        })
+        setTodos(updatedTodo)
+    }
+
+    const changeFlag = (innerValue) => {
+        if (innerValue === "Current") {
+            setShowCurrent(true)
+            setShowCompleted(false)
+        } else {
+            setShowCurrent(false)
+            setShowCompleted(true) 
+        }
+    }
+
     return (
         <div className='w-[50%] p-2'>
             <div>
@@ -20,10 +53,21 @@ export const TodoPractice = () => {
             <div className='mt-10 h-96 w-[100%]'>
                 <p className='text-2xl underline font-light'>Your Todos</p>
                 <div className='mt-5 flex w-[100%] items-center space-x-10 border-b-[1px] border-gray-200'>
-                    <p>Current</p>
-                    <p>Completed</p>
+                    <p onClick={(e) => changeFlag(e.target.innerText)}>Current</p>
+                    <p onClick={(e) => changeFlag(e.target.innerText)}>Completed</p>
                 </div>
-                <TodoCard />
+                <div className='h-96 overflow-y-auto'>
+                { showCurrent ? todos.map((todo) => {
+                    if (todo.status === false) {
+                        return <TodoCard key={todo.id} todoInfo={todo} getStatus={getStatus} />
+                    }
+                    }                    
+                ) : 
+                    completedTodos.map((todo) => 
+                        <TodoCard key={todo.id} todoInfo={todo} />
+                    )
+                }
+                </div>
             </div>
         </div>
     )

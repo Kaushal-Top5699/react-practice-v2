@@ -1,6 +1,7 @@
 import React from 'react';
 import { SearchPractice } from './components/SearchPractice/SearchPractice'
 import { TodoPractice } from './components/TodoPractice/TodoPractice';
+import { ChipsInput } from './components/ChipsInput/ChipsInput';
 
 function App() {
 
@@ -10,7 +11,8 @@ function App() {
         <p className="text-2xl font-medium text-white">React Practice</p>
       </div>
       {/* <SearchPractice /> */}
-      <TodoPractice />
+      {/* <TodoPractice /> */}
+      <ChipsInput />
     </div>
   )
 }
