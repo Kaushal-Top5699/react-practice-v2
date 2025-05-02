@@ -24,9 +24,10 @@ export const ChipsInput = () => {
     const addChip = (value) => {
         console.log(value)
         setChipVal("")
-        return setChips((prev) => 
+
+        return value.trim() !== "" && setChips((prev) => 
                 [...prev, value]
-            )
+        )
     }
 
     const removeChip = (index) => {

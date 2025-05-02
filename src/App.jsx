@@ -2,6 +2,8 @@ import React from 'react';
 import { SearchPractice } from './components/SearchPractice/SearchPractice'
 import { TodoPractice } from './components/TodoPractice/TodoPractice';
 import { ChipsInput } from './components/ChipsInput/ChipsInput';
+import { LikeButton } from './components/LikeButton/LikeButton';
+import { Accordion } from './components/Accordion/Accordion';
 
 function App() {
 
@@ -12,7 +14,9 @@ function App() {
       </div>
       {/* <SearchPractice /> */}
       {/* <TodoPractice /> */}
-      <ChipsInput />
+      {/* <ChipsInput /> */}
+      {/* <LikeButton /> */}
+      <Accordion />
     </div>
   )
 }
